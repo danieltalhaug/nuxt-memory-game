@@ -2,7 +2,7 @@ export enum Themes {
 	Colors = 'colors',
 }
 
-export enum NumberOfCards {
+export enum NumberOfPairs {
 	Eight = 8,
 	Twelve = 12,
 	Sixteen = 16,
@@ -11,6 +11,6 @@ export enum NumberOfCards {
 
 export type MemoryGameFormData = {
 	playerName: string;
-	numberOfCards: NumberOfCards;
+	numberOfCards: NumberOfPairs;
 	theme: Themes;
 };

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Themes, NumberOfCards, type MemoryGameFormData } from '~/types';
+import { Themes, NumberOfPairs, type MemoryGameFormData } from '~/types';
 
 const emit = defineEmits<{
 	(event: 'start-game', payload: MemoryGameFormData): void;
@@ -9,17 +9,17 @@ const defaultPlayerName = 'Player';
 
 const formData = ref<MemoryGameFormData>({
 	playerName: defaultPlayerName,
-	numberOfCards: NumberOfCards.Eight,
+	numberOfCards: NumberOfPairs.Eight,
 	theme: Themes.Colors,
 });
 
 const cardOptions = computed(() => {
-	return Object.values(NumberOfCards)
-		.filter((value): value is NumberOfCards => typeof value === 'number')
-		.map(numberOfCards => ({
-			label: String(numberOfCards),
-			value: numberOfCards,
-			description: `Grid of ${numberOfCards * 2} cards`,
+	return Object.values(NumberOfPairs)
+		.filter((value): value is NumberOfPairs => typeof value === 'number')
+		.map(numberOfPairs => ({
+			label: String(numberOfPairs),
+			value: numberOfPairs,
+			description: `Grid of ${numberOfPairs * 2} cards`,
 		}));
 });
 
@@ -41,10 +41,10 @@ function handleSubmit() {
 
 <template>
 	<UForm class="flex flex-col gap-8" @submit.prevent="handleSubmit">
-		<UFormField label="Player Name">
+		<UFormField label="Name">
 			<UInput v-model="formData.playerName" class="w-full" />
 		</UFormField>
-		<UFormField label="Amount of cards">
+		<UFormField label="Pairs">
 			<URadioGroup
 				v-model="formData.numberOfCards"
 				color="primary"
@@ -52,7 +52,7 @@ function handleSubmit() {
 				:items="cardOptions"
 			/>
 		</UFormField>
-		<UFormField label="Game theme">
+		<UFormField label="Theme">
 			<URadioGroup
 				v-model="formData.theme"
 				color="primary"
@@ -60,7 +60,7 @@ function handleSubmit() {
 				:items="themeOptions"
 			/>
 		</UFormField>
-		<UButton class="size-fit" type="submit">Start Game</UButton>
+		<UButton class="size-fit self-end" type="submit">Start Game</UButton>
 	</UForm>
 </template>
 
