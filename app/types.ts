@@ -20,3 +20,6 @@ export type Card = {
 	isFlipped: boolean;
 };
 
+export type ColorCard = Card & {
+	color: string;
+};
