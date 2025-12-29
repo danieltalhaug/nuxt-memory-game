@@ -15,7 +15,7 @@ function handleCardClick(cardId: number) {
 </script>
 
 <template>
-	<main class="grid grid-cols-8 gap-8">
+	<main class="grid grid-cols-8 gap-8 h-auto w-full">
 		<PlayingCardColor
 			v-for="card in cards"
 			:key="card.id"
