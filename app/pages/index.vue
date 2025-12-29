@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import type { ColorCard, MemoryGameFormData } from '~/types';
-import { generateColorCardPairs } from '~/utils/cards';
+import type { MemoryGameFormData } from '~/types';
+
+const { cards, isGameStarted, startGame, flipCard } = useMemoryGame();
 
 function onStartGame(formData: MemoryGameFormData) {
-	console.log(formData);
+	startGame(formData);
 }
 
-const cards = ref<ColorCard[]>(generateColorCardPairs(8));
-
 function onCardClick(cardId: number) {
-	const card = cards.value.find(card => card.id === cardId);
-	card!.isFlipped = !card?.isFlipped;
+	flipCard(cardId);
 }
 </script>
 
@@ -20,7 +18,7 @@ function onCardClick(cardId: number) {
 			title="Memory Game"
 			description="A memory game built using Nuxt and NuxtUI"
 		/>
-		<MemoryGameForm class="max-w-md mx-auto" @start-game="onStartGame" />
-		<MemoryGameBoard v-if="cards" :cards @click-card="onCardClick" />
+		<MemoryGameForm v-if="!isGameStarted" class="max-w-md mx-auto" @start-game="onStartGame" />
+		<MemoryGameBoard v-if="isGameStarted && cards.length > 0" :cards @click-card="onCardClick" />
 	</div>
 </template>
