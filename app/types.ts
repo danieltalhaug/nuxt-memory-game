@@ -14,3 +14,9 @@ export type MemoryGameFormData = {
 	numberOfCards: NumberOfPairs;
 	theme: Themes;
 };
+
+export type Card = {
+	id: number;
+	isFlipped: boolean;
+};
+
