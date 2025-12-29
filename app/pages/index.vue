@@ -13,12 +13,16 @@ function onCardClick(cardId: number) {
 </script>
 
 <template>
-	<div>
-		<UPageHero
-			title="Memory Game"
-			description="A memory game built using Nuxt and NuxtUI"
+	<div class="flex justify-center items-center h-screen">
+		<MemoryGameForm
+			v-if="!isGameStarted"
+			class="w-full max-w-md mx-auto"
+			@start-game="onStartGame"
 		/>
-		<MemoryGameForm v-if="!isGameStarted" class="max-w-md mx-auto" @start-game="onStartGame" />
-		<MemoryGameBoard v-if="isGameStarted && cards.length > 0" :cards @click-card="onCardClick" />
+		<MemoryGameBoard
+			v-else-if="cards.length > 0"
+			:cards
+			@click-card="onCardClick"
+		/>
 	</div>
 </template>
