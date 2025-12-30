@@ -4,7 +4,12 @@ const { formData } = useMemoryGameSettings();
 
 <template>
 	<UForm class="flex flex-col gap-8" @submit.prevent>
-		<h2 class="text-2xl font-bold">Game Settings</h2>
+		<Typography
+			text="Game Settings"
+			size="2xl"
+			tag="h2"
+			bold
+		/>
 		<UFormField
 			label="Card Reveal Time"
 			description="Sets the time cards remain face-up before flipping back in milliseconds."

@@ -44,6 +44,12 @@ function handleSubmit() {
 
 <template>
 	<UForm class="flex flex-col gap-8" @submit.prevent="handleSubmit">
+		<Typography
+			text="Memory Game"
+			size="2xl"
+			tag="h2"
+			bold
+		/>
 		<UFormField label="Name">
 			<UInput v-model="formData.playerName" class="w-full" />
 		</UFormField>
