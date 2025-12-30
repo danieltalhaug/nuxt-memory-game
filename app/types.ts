@@ -8,6 +8,8 @@ export enum Themes {
 }
 
 export enum NumberOfPairs {
+	Four = 4,
+	Six = 6,
 	Eight = 8,
 	Twelve = 12,
 	Sixteen = 16,
