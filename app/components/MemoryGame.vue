@@ -26,7 +26,7 @@ function onCardClick(cardId: number) {
 </script>
 
 <template>
-	<div class="flex justify-center items-center h-screen">
+	<div class="flex justify-center items-center min-h-screen">
 		<UTabs
 			v-if="!isGameStarted"
 			:items="tabItems"
@@ -47,6 +47,7 @@ function onCardClick(cardId: number) {
 
 		<MemoryGameBoard
 			v-if="isGameStarted"
+			class="max-w-[1080px] w-full"
 			:cards
 			@click-card="onCardClick"
 		/>
