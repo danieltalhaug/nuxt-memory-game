@@ -2,6 +2,7 @@ import type { ColorCard, MemoryGameFormData } from '~/types';
 import { generateColorCardPairs } from '~/utils/cards';
 
 export function useMemoryGame() {
+	const { formData: settings } = useMemoryGameSettings();
 	const cards = ref<ColorCard[]>([]);
 	const flippedCards = ref<number[]>([]);
 	const matchedPairs = ref<number[]>([]);
@@ -76,7 +77,7 @@ export function useMemoryGame() {
 				secondCard.isFlipped = false;
 				flippedCards.value = [];
 				canFlip.value = true;
-			}, 1000);
+			}, settings.value.cardRevealTime);
 		}
 	}
 
