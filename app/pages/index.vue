@@ -3,6 +3,19 @@ import type { MemoryGameFormData } from '~/types';
 
 const { cards, isGameStarted, startGame, flipCard } = useMemoryGame();
 
+const tabItems = [
+	{
+		label: 'Game',
+		icon: 'i-lucide-shapes',
+		slot: 'game'
+	},
+	{
+		label: 'Settings',
+		icon: 'i-lucide-settings',
+		slot: 'settings'
+	}
+]
+
 function onStartGame(formData: MemoryGameFormData) {
 	startGame(formData);
 }
@@ -14,13 +27,26 @@ function onCardClick(cardId: number) {
 
 <template>
 	<div class="flex justify-center items-center h-screen">
-		<MemoryGameForm
+		<UTabs
 			v-if="!isGameStarted"
-			class="w-full max-w-md mx-auto"
-			@start-game="onStartGame"
-		/>
+			:items="tabItems"
+			class="w-full max-w-lg items-start gap-8 min-h-160"
+			orientation="vertical"
+			size="lg"
+		>
+			<template #game>
+				<MemoryGameForm
+					class="w-full"
+					@start-game="onStartGame"
+				/>
+			</template>
+			<template #settings>
+				<MemoryGameSettingsForm />
+			</template>
+		</UTabs>
+
 		<MemoryGameBoard
-			v-else-if="cards.length > 0"
+			v-if="isGameStarted"
 			:cards
 			@click-card="onCardClick"
 		/>
