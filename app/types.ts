@@ -28,3 +28,10 @@ export type Card = {
 export type ColorCard = Card & {
 	color: string;
 };
+
+export enum CardPattern {
+	Tablecloth = 'tablecloth',
+	Hearts = 'hearts',
+	LinesDiagonal = 'lines-diagonal',
+	ZigZag = 'zig-zag',
+}

@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { CardPattern } from '~/types';
 
-const { formData } = useMemoryGameSettings();
+const props = defineProps<{
+	pattern: CardPattern;
+}>();
 
 const patternClass = computed(() => {
 	const patternMap: Record<CardPattern, string> = {
@@ -10,16 +12,10 @@ const patternClass = computed(() => {
 		[CardPattern.LinesDiagonal]: 'card-pattern-lines-diagonal',
 		[CardPattern.ZigZag]: 'card-pattern-zig-zag',
 	};
-	return patternMap[formData.value.cardPattern];
+	return patternMap[props.pattern];
 });
 </script>
 
 <template>
-	<div class="card-back border-8 border-solid h-full w-full" :class="patternClass" />
+	<div class="rounded-md h-12 w-full" :class="patternClass" />
 </template>
-
-<style scoped>
-.card-back {
-	border-color: var(--mg-card-border-color);
-}
-</style>
