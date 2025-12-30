@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Themes, NumberOfPairs, type MemoryGameFormData } from '~/types';
+import { LocalStorageKeys } from '~/types';
 
 const emit = defineEmits<{
 	(event: 'start-game', payload: MemoryGameFormData): void;
@@ -7,11 +8,13 @@ const emit = defineEmits<{
 
 const defaultPlayerName = 'Player';
 
-const formData = ref<MemoryGameFormData>({
+const defaultFormData: MemoryGameFormData = {
 	playerName: defaultPlayerName,
 	numberOfCards: NumberOfPairs.Eight,
 	theme: Themes.Colors,
-});
+};
+
+const formData = useLocalStorage<MemoryGameFormData>(LocalStorageKeys.MemoryGameForm, defaultFormData);
 
 const cardOptions = computed(() => {
 	return Object.values(NumberOfPairs)
