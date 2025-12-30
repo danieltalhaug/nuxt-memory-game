@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+:root {
+	--mg-card-border-color: var(--ui-primary);
+	--mg-card-background-color: white;
+	--mg-card-primary-color: var(--ui-primary);
+}
+
 @theme static {
 	--font-sans: 'Public Sans', sans-serif;
 
@@ -19,4 +25,48 @@
 
 html.light body {
 	background-color: var(--color-slate-50);
+}
+
+.card-pattern-tablecloth {
+	background-color: var(--mg-card-primary-color);
+	background-image: linear-gradient(to right, transparent 50%, rgba(255, 255, 255, 0.5) 50%),
+	linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.5) 50%);
+	background-size: 30px 30px;
+	background-position: center;
+}
+
+.card-pattern-hearts {
+	background:
+		radial-gradient(circle closest-side at 60% 43%, var(--mg-card-primary-color) 26%, rgba(187,0,51,0) 27%),
+		radial-gradient(circle closest-side at 40% 43%, var(--mg-card-primary-color) 26%, rgba(187,0,51,0) 27%),
+		radial-gradient(circle closest-side at 42% 22%, var(--mg-card-background-color) 43%, rgba(221,51,85,0) 45%),
+		radial-gradient(circle closest-side at 58% 22%, var(--mg-card-background-color) 43%, rgba(221,51,85,0) 45%),
+		radial-gradient(circle closest-side at 50% 35%, var(--mg-card-background-color) 32%, rgba(221,51,85,0) 27%),
+		radial-gradient(circle closest-side at 60% 43%, var(--mg-card-primary-color) 26%, rgba(187,0,51,0) 27%) 50px 50px,
+		radial-gradient(circle closest-side at 40% 43%, var(--mg-card-primary-color) 26%, rgba(187,0,51,0) 27%) 50px 50px,
+		radial-gradient(circle closest-side at 40% 22%, var(--mg-card-background-color) 40%, rgba(221,51,85,0) 45%) 52px 50px,
+		radial-gradient(circle closest-side at 60% 22%, var(--mg-card-background-color) 40%, rgba(221,51,85,0) 45%) 48px 50px,
+		radial-gradient(circle closest-side at 50% 35%, var(--mg-card-background-color) 30%, rgba(221,51,85,0) 37%) 50px 50px;
+	background-color: var(--mg-card-primary-color);
+	background-size: 100px 100px;
+}
+
+.card-pattern-lines-diagonal {
+	background-color: var(--mg-card-background-color);
+	opacity: 0.8;
+	background-size: 12px 12px;
+	background-image: repeating-linear-gradient(45deg, var(--mg-card-primary-color) 0, var(--mg-card-primary-color) 4px, var(--mg-card-background-color) 0, var(--mg-card-background-color) 50%);
+}
+
+.card-pattern-zig-zag {
+	background-color: #e5e5f7;
+	opacity: 0.8;
+	background-image:
+		linear-gradient(135deg, var(--mg-card-primary-color) 25%, transparent 25%),
+		linear-gradient(225deg, var(--mg-card-primary-color) 25%, transparent 25%),
+		linear-gradient(45deg, var(--mg-card-primary-color) 25%, transparent 25%),
+		linear-gradient(315deg, var(--mg-card-primary-color) 25%, var(--mg-card-background-color) 25%);
+	background-position: 10px 0, 10px 0, 0 0, 0 0;
+	background-size: 26px 26px;
+	background-repeat: repeat;
 }
