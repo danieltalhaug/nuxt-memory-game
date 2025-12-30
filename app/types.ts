@@ -1,5 +1,6 @@
 export enum LocalStorageKeys {
 	MemoryGameForm = 'mg-form-data',
+	MemoryGameSettings = 'mg-settings-data',
 }
 
 export enum Themes {
